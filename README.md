@@ -14,7 +14,7 @@ Write a Supabase edge function that looks a bit like this:
 ```javascript
 import { validateSignature } from "https://raw.githubusercontent.com/SnapDBApp/deno-paddle-verify/main/mod.ts";
 
-Deno.serve(async (req)=>{
+Deno.serve(async (req) => {
   const secretKey = Deno.env.get("PADDLE_WEBHOOK_SECRET");
   const signature = req.headers.get("Paddle-Signature");
   if (!signature) {
@@ -25,8 +25,8 @@ Deno.serve(async (req)=>{
   const body = await req.text();
   const data = {
     isValid: await validateSignature(signature, body, secretKey)
-    ? "Signature is good"
-    : "Signature is bad",
+      ? "Signature is good"
+      : "Signature is bad",
   };
   return new Response(JSON.stringify(data), {
     headers: {
