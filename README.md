@@ -1,4 +1,5 @@
 # Deno Paddle Webhook Verify
+
 A small deno module to verify webhook signatures so you can easily build support
 for Paddle Webhooks in to
 [Supabase Edge Functions](https://supabase.com/docs/guides/functions).
@@ -23,7 +24,9 @@ Deno.serve(async (req)=>{
   }
   const body = await req.text();
   const data = {
-    isValid: await validateSignature(signature, body, secretKey) ? "Signature is good" : "Signature is bad",
+    isValid: await validateSignature(signature, body, secretKey)
+    ? "Signature is good"
+    : "Signature is bad",
   };
   return new Response(JSON.stringify(data), {
     headers: {
@@ -34,6 +37,7 @@ Deno.serve(async (req)=>{
 ```
 
 ## Tests
+
 Run:
 
 ```
